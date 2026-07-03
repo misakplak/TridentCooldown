@@ -46,8 +46,11 @@ public class TridentCooldown implements Listener {
                 BossBar.Color.GREEN,
                 BossBar.Overlay.PROGRESS
         );
+        boolean activate = Cooldowns.getInstance().getConfig().getBoolean("send-trident-cooldowntimetobossbar");
+if (activate == true) {
+    player.showBossBar(cooldown);
+}
 
-        player.showBossBar(cooldown);
 
         new BukkitRunnable() {
 
