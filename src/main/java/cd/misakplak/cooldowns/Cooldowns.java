@@ -1,5 +1,6 @@
 package cd.misakplak.cooldowns;
 
+import org.bstats.bukkit.Metrics;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -25,6 +26,9 @@ private static Cooldowns instance;
         // Plugin startup logic
         instance = this;
         saveDefaultConfig();
+
+        int pluginId = 32349;
+        Metrics metrics = new Metrics(this, pluginId);
 
         if (!Files.exists(getDataFolder().toPath())) {}
 

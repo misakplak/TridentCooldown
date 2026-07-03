@@ -8,7 +8,7 @@ import org.bukkit.entity.Player;
 public class CooldownCommand implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 
-        if (!sender.hasPermission("cooldown.reload") && !(sender instanceof Player player)) {
+        if (!(sender instanceof Player player) && !sender.hasPermission("cooldown.reload")) {
             sender.sendMessage("§cYou don't have permission.");
             return true;
         }
