@@ -1,0 +1,16 @@
+name: Cooldowns
+description: $description
+version: '${version}'
+
+main: cd.misakplak.cooldowns.Cooldowns
+paperPluginLoader: cd.misakplak.cooldowns.CooldownsLoader
+api-version: '1.21.11'
+load: POSTWORLD
+
+authors: [ misakplak ]
+
+commands:
+
+  cooldown:
+    description: main command
+    usage: /cooldown reload
