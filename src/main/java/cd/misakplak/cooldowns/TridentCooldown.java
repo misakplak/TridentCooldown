@@ -6,8 +6,6 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.player.PlayerRiptideEvent;
 import org.bukkit.inventory.ItemStack;
@@ -21,10 +19,15 @@ public class TridentCooldown implements Listener {
                 int seconds = Cooldowns.getInstance().getConfig().getInt("trident-cooldown");
                 ItemStack item = e.getItem();
                 Player player = e.getPlayer();
-            Cooldowns.getInstance().getCooldownPlayers().put(e.getPlayer().getUniqueId(), e.getPlayer().getUniqueId());
-                player.setCooldown(item.getType(), seconds * 20);
-                StartCooldownTimer(e.getPlayer());
-                e.getPlayer().sendMessage("§8You are on cooldown!");
+
+                if (Cooldowns.getInstance().getCooldownPlayers().containsKey(player.getUniqueId())) {
+                    return;
+                }
+
+        Cooldowns.getInstance().getCooldownPlayers().put(e.getPlayer().getUniqueId(), e.getPlayer().getUniqueId());
+        player.setCooldown(item.getType(), seconds * 20);
+        StartCooldownTimer(e.getPlayer());
+        e.getPlayer().sendMessage("§8You are on cooldown!");
 
     }
 
